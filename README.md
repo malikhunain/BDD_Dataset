@@ -16,7 +16,7 @@ No prior BDD dataset targets Python. GWT (Alcântara Júnior & Montandon, MSR'26
 
 | Attribute | Value |
 |---|---|
-| Total problems | 1,132 |
+| Total problems | 1,137 |
 | HumanEval-derived | 160 |
 | MBPP-derived | 972 |
 | Scenarios / problem (mean, median) | 5.39, 5.0 |
