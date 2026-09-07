@@ -8,7 +8,7 @@ This repository hosts the dataset described in *"A Behavior-Driven Dataset for P
 
 ## What this is
 
-`BDD_Dataset` contains **1,132 problems** from HumanEval and MBPP, each translated into Gherkin BDD format with executable Python [Behave](https://behave.readthedocs.io/) step definitions, paired with the **original, human-authored HumanEval/MBPP canonical reference solution** (not a model-generated artifact). Every problem is execution-verified: all scenarios pass against the reference solution via `behave`.
+`BDD_Dataset` contains **1,137 problems** from HumanEval and MBPP, each translated into Gherkin BDD format with executable Python [Behave](https://behave.readthedocs.io/) step definitions, paired with the **original, human-authored HumanEval/MBPP canonical reference solution** (not a model-generated artifact). Every problem is execution-verified: all scenarios pass against the reference solution via `behave`.
 
 No prior BDD dataset targets Python. GWT (Alcântara Júnior & Montandon, MSR'26), the only prior large-scale BDD dataset, covers Java/JavaScript/Ruby, is mined rather than executed, and explicitly names Python/Behave as future work. This dataset closes that gap.
 
@@ -107,8 +107,10 @@ A fully runnable version of this and 4 other example problems is in [`sample/`](
 
 ```
 BDD_Dataset/
-├── bdd_dataset.jsonl      # the full dataset -- 1,132 records, one per line
-├── sample/                # 4 problems as runnable Behave files (browsable, not the full corpus)
+├── bdd_dataset.jsonl             # the full dataset -- 1,137 records, one per line
+├── bdd_dataset_humanEval.jsonl   # only humanEval source problems -- 164 records, one per line
+├── bdd_dataset_mbpp.jsonl        # only mbpp source problems -- 973 records, one per line
+├── sample/                       # 4 problems as runnable Behave files (browsable, not the full corpus)
 │   ├── HumanEval_0/
 │   │   ├── HumanEval_0.feature
 │   │   ├── steps/
@@ -121,7 +123,7 @@ BDD_Dataset/
 └── LICENSE                 # CC-BY-4.0 notice (see Licensing below)
 ```
 
-`sample/` is illustrative only — 5 of the 1,132 problems, included so you can browse and run real Behave files without first writing a script to explode the jsonl. The full dataset is `bdd_dataset.jsonl`.
+`sample/` is illustrative only — 5 of the 1,137 problems, included so you can browse and run real Behave files without first writing a script to explode the jsonl. The full dataset is `bdd_dataset.jsonl`.
 
 ## Loading the dataset
 
@@ -133,7 +135,7 @@ with open("bdd_dataset.jsonl", encoding="utf-8") as f:
     for line in f:
         records.append(json.loads(line))
 
-print(len(records))          # 1132
+print(len(records))          # 1137
 print(records[0]["id"])      # e.g. "HumanEval_0"
 ```
 
