@@ -17,14 +17,15 @@ No prior BDD dataset targets Python. GWT (Alcântara Júnior & Montandon, MSR'26
 | Attribute | Value |
 |---|---|
 | Total problems | 1,137 |
-| HumanEval-derived | 160 |
-| MBPP-derived | 972 |
+| Total scenarios | 6183 |
+| Total steps | 2112 |
 | Scenarios / problem (mean, median) | 5.39, 5.0 |
 | Steps / problem (mean, median) | 18.43, 18.0 |
 | Reference solution LOC (mean, median) | 8.19, 6.0 |
 | Reference solution cyclomatic complexity (mean, median) | 2.92, 2.0 |
 | Execution verification | 100% (via `behave`) |
-| Static analysis (Tier 1, AST-based) | 0/14 flagged candidates confirmed as defects |
+| HumanEval-derived | 164 |
+| MBPP-derived | 973 |
 | License (HumanEval / MBPP) | MIT / CC-BY-4.0 |
 
 Full construction methodology, verification process, and quality analysis are described in the paper (link added once published).
