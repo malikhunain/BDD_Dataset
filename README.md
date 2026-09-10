@@ -19,9 +19,9 @@ No prior BDD dataset targets Python. GWT (Alcântara Júnior & Montandon, MSR'26
 | Total problems | 1,137 |
 | Total scenarios | 6,183 |
 | Total steps | 21,122 |
-| Scenarios / problem (mean, median) | 5.39, 5.0 |
-| Steps / problem (mean, median) | 18.43, 18.0 |
-| Reference solution LOC (mean, median) | 8.19, 6.0 |
+| Scenarios / problem (mean, median) | 5.44, 5.0 |
+| Steps / problem (mean, median) | 18.58, 18.0 |
+| Reference solution LOC (mean, median) | 8.21, 6.0 |
 | Reference solution cyclomatic complexity (mean, median) | 2.92, 2.0 |
 | Execution verification | 100% (via `behave`) |
 | HumanEval-derived | 164 |
