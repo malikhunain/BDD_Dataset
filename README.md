@@ -17,8 +17,8 @@ No prior BDD dataset targets Python. GWT (Alcântara Júnior & Montandon, MSR'26
 | Attribute | Value |
 |---|---|
 | Total problems | 1,137 |
-| Total scenarios | 6183 |
-| Total steps | 21122 |
+| Total scenarios | 6,183 |
+| Total steps | 21,122 |
 | Scenarios / problem (mean, median) | 5.39, 5.0 |
 | Steps / problem (mean, median) | 18.43, 18.0 |
 | Reference solution LOC (mean, median) | 8.19, 6.0 |
@@ -110,11 +110,13 @@ BDD_Dataset/
 ├── bdd_dataset.jsonl             # the full dataset -- 1,137 records, one per line
 ├── bdd_dataset_humanEval.jsonl   # only humanEval source problems -- 164 records, one per line
 ├── bdd_dataset_mbpp.jsonl        # only mbpp source problems -- 973 records, one per line
+├── jsonl_to_behave.py            # converts jsonl records into runnable Behave folders
 ├── sample/                       # 4 problems as runnable Behave files (browsable, not the full corpus)
 │   ├── HumanEval_0/
-│   │   ├── HumanEval_0.feature
-│   │   ├── steps/
-│   │   │   └── HumanEval_0_steps.py
+│   │   ├── features
+│   │   │   ├── HumanEval_0.feature
+│   │   │   └── steps/
+│   │   │       └── HumanEval_0_steps.py
 │   │   └── solution.py
 │   ├── HumanEval_...
 │   ├── MBPP_.../
@@ -123,7 +125,52 @@ BDD_Dataset/
 └── LICENSE                 # CC-BY-4.0 notice (see Licensing below)
 ```
 
-`sample/` is illustrative only — 5 of the 1,137 problems, included so you can browse and run real Behave files without first writing a script to explode the jsonl. The full dataset is `bdd_dataset.jsonl`.
+`sample/` is illustrative only — 4 of the 1,137 problems, included so you can browse and run real Behave files without first writing a script to explode the jsonl. The full dataset is `bdd_dataset.jsonl`.
+
+## Running the dataset with Behave
+
+**Prerequisite:** `pip install behave`
+
+### Option A: run the included samples directly
+
+```bash
+cd sample/HumanEval_0
+behave features/
+```
+
+Each folder under `sample/` is independently runnable this way — no setup
+beyond installing `behave`.
+
+### Option B: convert the full jsonl into runnable folders
+
+The dataset ships as jsonl for easy programmatic loading, but each record
+can be exploded into the same runnable folder structure as `sample/` using
+[`jsonl_to_behave.py`](./jsonl_to_behave.py):
+
+```bash
+# Explode the entire dataset (creates ~1,137 folders)
+python jsonl_to_behave.py --input bdd_dataset.jsonl --output_dir ./exploded
+
+# Or just one source
+python jsonl_to_behave.py --input bdd_dataset_humanEval.jsonl --output_dir ./exploded
+
+# Or a specific subset
+python jsonl_to_behave.py --input bdd_dataset.jsonl --output_dir ./exploded --ids HumanEval_0 MBPP_1
+
+# Or a quick sample, for a fast smoke test
+python jsonl_to_behave.py --input bdd_dataset.jsonl --output_dir ./exploded --limit 10
+```
+
+Then run `behave` against any exploded problem the same way as the samples:
+
+```bash
+cd exploded/HumanEval_0 && behave features/
+```
+
+**Note:** exploding the full dataset creates ~1,137 folders and ~3,400
+files. This is a local convenience for working with the dataset, not
+something to commit — add your `--output_dir` to `.gitignore` if you're
+working inside a clone of this repo.
 
 ## Loading the dataset
 
@@ -150,6 +197,12 @@ If you use this dataset, please retain attribution to both source benchmarks:
 > This dataset derives from HumanEval (Chen et al., 2021, MIT License) and
 > MBPP (Austin et al., 2021, CC-BY-4.0 License).
 
+## Related resources
+
+- **Generation pipeline (code):** [BDD-Dataset-Generation](https://github.com/malikhunain/BDD-Dataset-Generation)
+- **Paper:** link added once published
+- **Zenodo archive (persistent DOI):**  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22645322.svg)](https://doi.org/10.5281/zenodo.22645322)
+
 ## Citation
 
 ```bibtex
@@ -163,13 +216,3 @@ If you use this dataset, please retain attribution to both source benchmarks:
 }
 ```
 *(DOI to be updated once assigned.)*
-
-## Related resources
-
-- **Generation pipeline (code):** [BDD-Dataset-Generation](https://github.com/malikhunain/BDD-Dataset-Generation)
-- **Paper:** link added once published
-- **Zenodo archive (persistent DOI):**  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22645322.svg)](https://doi.org/10.5281/zenodo.22645322)
-
-## Limitations
-
-Briefly: Python only; inherits HumanEval/MBPP's distributional biases toward short, self-contained algorithmic functions; Gherkin-formatted specifications for algorithmic problems is a narrower use of BDD than its original stakeholder-collaboration purpose; not protected against training-data contamination (HumanEval/MBPP are widely present in LLM training corpora). Full discussion in the paper, Section 8.
