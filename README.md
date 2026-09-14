@@ -201,7 +201,7 @@ If you use this dataset, please retain attribution to both source benchmarks:
 
 - **Generation pipeline (code):** [BDD-Dataset-Generation](https://github.com/malikhunain/BDD-Dataset-Generation)
 - **Paper:** link added once published
-- **Zenodo archive (persistent DOI):**  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22645322.svg)](https://doi.org/10.5281/zenodo.22645322)
+- **Zenodo archive (DOI):**  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22645322.svg)](https://doi.org/10.5281/zenodo.22645322)
 
 ## Citation
 

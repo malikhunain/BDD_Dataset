@@ -1,0 +1,51 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Murtaza"
+  given-names: "Hunain"
+  orcid: "https://orcid.org/0009-0001-8068-1322"
+  affiliation: "University of Hildesheim"
+- family-names: "Hesenius"
+  given-names: "Marc"
+  orcid: "https://orcid.org/0000-0002-6826-9212"
+  affiliation: "University of Hildesheim"
+title: "BDD_Dataset: A Behavior-Driven Dataset for Python Code Generation Benchmarks"
+version: 1.0
+doi: 10.5281/zenodo.22645322
+date-released: 2026-09-10
+url: "https://github.com/malikhunain/BDD_Dataset"
+repository-code: "https://github.com/malikhunain/BDD-Dataset-Generation"
+license: CC-BY-4.0
+abstract: >-
+  A Python/Behave Behavior-Driven Development (BDD) dataset for code
+  generation benchmarks, translated from HumanEval and MBPP, fully
+  execution-verified. Contains 1,137 problems, 6,183 scenarios, and
+  21,122 steps, each paired with the original human-authored HumanEval/MBPP
+  canonical reference solution. Every problem is execution-verified via
+  behave.
+keywords:
+  - behavior-driven development
+  - Gherkin
+  - code generation
+  - dataset
+  - benchmark
+  - HumanEval
+  - MBPP
+  - Behave
+  - Python
+preferred-citation:
+  type: conference-paper
+  title: "A Behavior-Driven Dataset for Python Code Generation Benchmarks"
+  authors:
+    - family-names: "Murtaza"
+      given-names: "Hunain"
+      orcid: "https://orcid.org/0009-0001-8068-1322"
+      affiliation: "University of Hildesheim"
+    - family-names: "Hesenius"
+      given-names: "Marc"
+      orcid: "https://orcid.org/0000-0002-6826-9212"
+      affiliation: "University of Hildesheim"
+  year: 2027
+  publisher:
+    name: "ACM"
+  collection-title: "Proceedings of the 24th International Conference on Mining Software Repositories -- Data and Tool Showcase Track (MSR '27)"
